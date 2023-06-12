@@ -10,14 +10,13 @@ import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
-
 /**
  * Created by LaunchCode
  */
 public class TechJobsTest {
 
     private static ByteArrayOutputStream baos;
-    private String sep = System.lineSeparator();
+
     // set up an alternative output stream to capture output
     // this needs to be done before every test so we don't contaminate test output
     @Before
@@ -43,12 +42,12 @@ public class TechJobsTest {
         String input = "0\n2\nBuzzbold\nx";
         String output = runProgramWithInput(input);
         String expected = getFileContents("src/test/resources/testPrintJobs.txt");
-        assertEquals(expected.toString().trim().replace("\r",""), output.toString().trim().replace("\r",""));
+        assertEquals(expected, output);
     }
 
     @Test
     public void testPrintJobsNoResults() throws IOException {
-        String input = "0"+sep+"2"+sep+"Chicago"+sep+"x";
+        String input = "0\n2\nChicago\nx";
         String output = runProgramWithInput(input);
         String expected = getFileContents("src/test/resources/testPrintJobsNoResults.txt");
         assertEquals(expected, output);
@@ -59,7 +58,7 @@ public class TechJobsTest {
         String input = "0\n0\nRuby\nx";
         String output = runProgramWithInput(input);
         String expected = getFileContents("src/test/resources/testFindByValue.txt");
-        assertEquals(expected.toString().trim().replace("\r",""), output.toString().trim().replace("\r",""));
+        assertEquals(expected, output);
     }
 
     @Test
